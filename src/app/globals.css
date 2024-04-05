@@ -28,8 +28,8 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
     --ring: 222.2 84% 4.9%;
 
     --radius: 0.5rem;
@@ -42,5 +42,11 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+  .outline-btn {
+    background: linear-gradient(180deg, #131415 0%, #050505 100%);
+    box-shadow: inset 0px 0.602187px 0.602187px -1.25px rgba(240, 240, 240, 0.07),
+      inset 0px 2.28853px 2.28853px -2.5px rgba(240, 240, 240, 0.063),
+      inset 0px 10px 10px -3.75px rgba(240, 240, 240, 0.024);
   }
 }
