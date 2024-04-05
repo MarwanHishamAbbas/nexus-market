@@ -10,6 +10,7 @@ import { createClient } from "@/lib/supabase/client"
 import { useRouter } from "next/navigation"
 import { Loader2 } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
+import { login } from "@/app/(auth)/actions"
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -41,13 +42,18 @@ function SignInForm() {
       toast({ title: error.message, variant: "destructive" })
       return
     }
+    toast({ title: "Signed in successfully" })
     router.push("/")
     router.refresh()
   }
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+      <form
+        action={login}
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="space-y-4"
+      >
         <FormField
           control={form.control}
           name="email"
