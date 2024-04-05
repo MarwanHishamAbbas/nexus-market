@@ -2,14 +2,13 @@ import Image from "next/image"
 import Link from "next/link"
 import { FC } from "react"
 import NexusLogo from "../../assets/logo.svg"
-import { Button, buttonVariants } from "../ui/button"
+import { buttonVariants } from "../ui/button"
 import { NAV_LINKS } from "@/app/constants/links"
 import { generateSlug } from "@/lib/utils"
 import { ArrowRight, User2Icon } from "lucide-react"
 import MobileNavbar from "./MobileNavbar"
 
 import { createClient } from "@/lib/supabase/server"
-import { unknown } from "zod"
 
 interface NavbarProps {}
 

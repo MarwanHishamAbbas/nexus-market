@@ -7,7 +7,6 @@ import { Form, FormControl, FormField, FormItem, FormMessage } from "../ui/form"
 import { Button } from "../ui/button"
 import { Input } from "../ui/input"
 import { createClient } from "@/lib/supabase/client"
-import { revalidatePath } from "next/cache"
 import { useRouter } from "next/navigation"
 import { Loader2 } from "lucide-react"
 
