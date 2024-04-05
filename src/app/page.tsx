@@ -1,11 +1,11 @@
-import { Button } from "@/components/ui/button"
-
 export default function Home() {
   return (
-    <div className="mt-10">
-      <Button>Click me</Button>
-      <Button variant={"outline"}>Outline</Button>
-      <Button variant={"link"}>link</Button>
+    <div>
+      <h1>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque commodi
+        tempore nisi maxime neque omnis doloremque, accusamus sapiente
+        repellendus minima.
+      </h1>
     </div>
   )
 }
