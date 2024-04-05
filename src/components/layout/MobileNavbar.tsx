@@ -15,9 +15,20 @@ import {
 import { NAV_LINKS } from "@/app/constants/links"
 import { generateSlug } from "@/lib/utils"
 import { useRouter } from "next/navigation"
+import { User } from "@supabase/supabase-js"
+import { createClient } from "@/lib/supabase/client"
 
-function MobileNavbar() {
+function MobileNavbar({ user }: { user: User | null }) {
+  const supabase = createClient()
   const router = useRouter()
+  const signOut = async () => {
+    const { error } = await supabase.auth.signOut()
+    if (error) {
+      console.log("Error Signin out")
+    }
+    router.push("/sign-in")
+    router.refresh()
+  }
   return (
     <div className="lg:hidden">
       <DropdownMenu>
@@ -41,16 +52,19 @@ function MobileNavbar() {
             ))}
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
-          <DropdownMenuItem
-            onClick={() => router.push("/sign-up")}
-            className={buttonVariants({ size: "lg", className: "w-full" })}
-          >
-            All-Acess Pass <ArrowRight className="size-4 ml-2" />
-          </DropdownMenuItem>
-          {/* <DropdownMenuItem>
-            <LogOut className="mr-2 h-4 w-4" />
-            <span>Log out</span>
-          </DropdownMenuItem> */}
+          {user ? (
+            <DropdownMenuItem onClick={signOut}>
+              <LogOut className="mr-2 h-4 w-4" />
+              <span>Log out</span>
+            </DropdownMenuItem>
+          ) : (
+            <DropdownMenuItem
+              onClick={() => router.push("/sign-up")}
+              className={buttonVariants({ size: "lg", className: "w-full" })}
+            >
+              All-Acess Pass <ArrowRight className="size-4 ml-2" />
+            </DropdownMenuItem>
+          )}
         </DropdownMenuContent>
       </DropdownMenu>
     </div>
