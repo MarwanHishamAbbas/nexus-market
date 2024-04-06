@@ -1,19 +1,16 @@
 "use client"
 
-import { ArrowRight, LogOut, Menu, User2Icon } from "lucide-react"
+import { LogOut, User2Icon } from "lucide-react"
 
-import { Button, buttonVariants } from "@/components/ui/button"
+import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { NAV_LINKS } from "@/app/constants/links"
-import { generateSlug } from "@/lib/utils"
 import { useRouter } from "next/navigation"
 import { User } from "@supabase/supabase-js"
 import { createClient } from "@/lib/supabase/client"

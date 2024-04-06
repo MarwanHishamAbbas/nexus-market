@@ -2,32 +2,25 @@
 
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import { z } from "zod"
 import { Form, FormControl, FormField, FormItem, FormMessage } from "../ui/form"
 import { Button } from "../ui/button"
 import { Input } from "../ui/input"
-import { createClient } from "@/lib/supabase/client"
 import { useRouter } from "next/navigation"
 import { Loader2 } from "lucide-react"
 import Link from "next/link"
 import { useToast } from "@/hooks/use-toast"
-
-const formSchema = z.object({
-  name: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
-  }),
-  email: z.string().email(),
-  password: z
-    .string()
-    .min(8, { message: "Passowrd should be at least 8 characters" }),
-})
+import {
+  CreateUserSchema,
+  TCreateUserSchema,
+} from "@/lib/validator/auth-validators"
+import { signUp } from "@/lib/helpers/auth-helpers/server"
 
 function SignUpForm() {
   const router = useRouter()
   const { toast } = useToast()
   // 1. Define your form.
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<TCreateUserSchema>({
+    resolver: zodResolver(CreateUserSchema),
     defaultValues: {
       name: "",
       email: "",
@@ -36,26 +29,13 @@ function SignUpForm() {
   })
 
   // 2. Define a submit handler.
-  async function onSubmit(values: z.infer<typeof formSchema>) {
-    const supabase = createClient()
-    const { error: signUpError } = await supabase.auth.signUp({
-      email: values.email,
-      password: values.password,
-      options: {
-        emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL!}/sign-in`,
-        data: {
-          name: values.name,
-        },
-      },
-    })
-    if (signUpError) {
-      console.log("Error Signing up", signUpError)
-    }
-
+  async function onSubmit(values: TCreateUserSchema) {
+    const { message, name, redirectURL } = await signUp(values)
     toast({
-      title: "Verfication link has been sent to your inbox",
+      title: name,
+      description: message,
     })
-    router.push("/sign-in")
+    router.push(redirectURL ?? "")
   }
 
   return (

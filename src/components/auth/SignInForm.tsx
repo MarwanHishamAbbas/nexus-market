@@ -11,20 +11,15 @@ import { useRouter } from "next/navigation"
 import { Loader2 } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 import Link from "next/link"
-
-const formSchema = z.object({
-  email: z.string().email(),
-  password: z
-    .string()
-    .min(8, { message: "Passowrd should be at least 8 characters" }),
-})
+import { SignInSchema, TSignInSchema } from "@/lib/validator/auth-validators"
+import { login } from "@/lib/helpers/auth-helpers/server"
 
 function SignInForm() {
   const router = useRouter()
   const { toast } = useToast()
   // 1. Define your form.
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<TSignInSchema>({
+    resolver: zodResolver(SignInSchema),
     defaultValues: {
       email: "",
       password: "",
@@ -32,24 +27,13 @@ function SignInForm() {
   })
 
   // 2. Define a submit handler.
-  async function onSubmit(values: z.infer<typeof formSchema>) {
-    const supabase = createClient()
-    const { error, data } = await supabase.auth.signInWithPassword({
-      email: values.email,
-      password: values.password,
+  async function onSubmit(values: TSignInSchema) {
+    const { message, name, status, redirectURL } = await login(values)
+    toast({
+      title: name,
+      description: message,
     })
-    if (error) {
-      toast({ title: error.message, variant: "destructive" })
-      return
-    }
-    if (data.user.email === "marwanhiisham@gmail.com") {
-      toast({ title: "Signed in successfully as an ADMIN" })
-      console.log("Your admin")
-    } else {
-      toast({ title: "Signed in successfully" })
-    }
-    router.push("/")
-    router.refresh()
+    router.push(redirectURL ?? "")
   }
 
   return (
