@@ -19,9 +19,9 @@ const buttonVariants = cva(
         link: "text-primary hover:text-primary/70 !px-0",
       },
       size: {
-        default: "h-9 px-6 py-3 font-medium",
+        default: "h-10 px-6 py-4 font-medium",
         sm: "h-8 px-5",
-        lg: "h-10 px-8",
+        lg: "h-11 px-8",
         icon: "h-10 w-10",
       },
     },

@@ -1,14 +1,15 @@
 import Image from "next/image"
 import Link from "next/link"
-import { FC } from "react"
+import { FC, use } from "react"
 import NexusLogo from "../../assets/logo.svg"
-import { buttonVariants } from "../ui/button"
+import { Button, buttonVariants } from "../ui/button"
 import { NAV_LINKS } from "@/app/constants/links"
 import { generateSlug } from "@/lib/utils"
-import { ArrowRight, User2Icon } from "lucide-react"
+import { ArrowRight, User2, User2Icon } from "lucide-react"
 import MobileNavbar from "./MobileNavbar"
 
 import { createClient } from "@/lib/supabase/server"
+import UserNav from "../auth/UserNav"
 
 interface NavbarProps {}
 
@@ -36,9 +37,7 @@ const Navbar: FC<NavbarProps> = async ({}) => {
             </li>
           ))}
           {user ? (
-            <>
-              <h1>{user.email}</h1>
-            </>
+            <UserNav user={user} />
           ) : (
             <>
               <Link

@@ -10,7 +10,7 @@ import { createClient } from "@/lib/supabase/client"
 import { useRouter } from "next/navigation"
 import { Loader2 } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
-import { login } from "@/app/(auth)/actions"
+import Link from "next/link"
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -49,11 +49,7 @@ function SignInForm() {
 
   return (
     <Form {...form}>
-      <form
-        action={login}
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-4"
-      >
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
         <FormField
           control={form.control}
           name="email"
@@ -90,6 +86,12 @@ function SignInForm() {
           Sign In
         </Button>
       </form>
+      <p className="text-secondary text-sm text-center mt-4">
+        Don&apos;t have an account yet?{" "}
+        <Link className="underline" href="/sign-up">
+          Sign up
+        </Link>
+      </p>
     </Form>
   )
 }

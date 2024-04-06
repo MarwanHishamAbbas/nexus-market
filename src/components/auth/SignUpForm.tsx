@@ -9,6 +9,7 @@ import { Input } from "../ui/input"
 import { createClient } from "@/lib/supabase/client"
 import { useRouter } from "next/navigation"
 import { Loader2 } from "lucide-react"
+import Link from "next/link"
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -92,11 +93,18 @@ function SignUpForm() {
           className="w-full"
           disabled={form.control._formState.isSubmitting}
         >
+          Sign Up
           {form.control._formState.isSubmitting && (
             <Loader2 className="size-4 animate-spin mr-2" />
           )}
         </Button>
       </form>
+      <p className="text-secondary text-sm text-center mt-4">
+        Already have an account?{" "}
+        <Link className="underline" href="/sign-in">
+          Sign In
+        </Link>
+      </p>
     </Form>
   )
 }
