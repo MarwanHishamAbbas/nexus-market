@@ -1,11 +1,9 @@
+import HomeHero from "@/components/home/Hero"
+
 export default function Home() {
   return (
-    <div>
-      <h1>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque commodi
-        tempore nisi maxime neque omnis doloremque, accusamus sapiente
-        repellendus minima.
-      </h1>
-    </div>
+    <main className="max-w-7xl mx-auto px-3">
+      <HomeHero />
+    </main>
   )
 }
