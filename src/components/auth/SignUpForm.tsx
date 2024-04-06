@@ -10,6 +10,7 @@ import { createClient } from "@/lib/supabase/client"
 import { useRouter } from "next/navigation"
 import { Loader2 } from "lucide-react"
 import Link from "next/link"
+import { useToast } from "@/hooks/use-toast"
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -23,6 +24,7 @@ const formSchema = z.object({
 
 function SignUpForm() {
   const router = useRouter()
+  const { toast } = useToast()
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -36,15 +38,23 @@ function SignUpForm() {
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof formSchema>) {
     const supabase = createClient()
-    const { error } = await supabase.auth.signUp({
+    const { error: signUpError } = await supabase.auth.signUp({
       email: values.email,
       password: values.password,
-      options: { data: { name: values.name } },
+      options: {
+        emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL!}/sign-in`,
+        data: {
+          name: values.name,
+        },
+      },
     })
-    if (error) {
-      console.log("Error Signing up")
+    if (signUpError) {
+      console.log("Error Signing up", signUpError)
     }
 
+    toast({
+      title: "Verfication link has been sent to your inbox",
+    })
     router.push("/sign-in")
   }
 
@@ -95,7 +105,7 @@ function SignUpForm() {
         >
           Sign Up
           {form.control._formState.isSubmitting && (
-            <Loader2 className="size-4 animate-spin mr-2" />
+            <Loader2 className="size-4 animate-spin ml-2" />
           )}
         </Button>
       </form>

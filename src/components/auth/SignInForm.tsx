@@ -42,7 +42,12 @@ function SignInForm() {
       toast({ title: error.message, variant: "destructive" })
       return
     }
-    toast({ title: "Signed in successfully" })
+    if (data.user.email === "marwanhiisham@gmail.com") {
+      toast({ title: "Signed in successfully as an ADMIN" })
+      console.log("Your admin")
+    } else {
+      toast({ title: "Signed in successfully" })
+    }
     router.push("/")
     router.refresh()
   }

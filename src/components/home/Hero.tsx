@@ -20,7 +20,7 @@ const HomeHero = () => {
           />
           <h3 className="font-medium text-sm">Marwan Hisham</h3>
         </div>
-        <h1 className="text-3xl">The Future Of E-Commerce</h1>
+        <h1 className="text-4xl font-semibold">The Future Of E-Commerce</h1>
         <p className="text-secondary text-sm">
           Ultimate Framer template to transform your website into an eCommerce
           powerhouse. Sell digital products easily & beautifully, powered by the

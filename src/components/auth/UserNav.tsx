@@ -41,7 +41,7 @@ function UserNav({ user }: { user: User | null }) {
         <DropdownMenuLabel>
           Hello, <br />
           <span className="text-secondary">
-            {user?.identities![0].identity_data!.name}
+            {user?.identities![0].identity_data!.name || user?.email}
           </span>
         </DropdownMenuLabel>
 

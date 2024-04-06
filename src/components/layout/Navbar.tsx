@@ -5,7 +5,7 @@ import NexusLogo from "../../assets/logo.svg"
 import { Button, buttonVariants } from "../ui/button"
 import { NAV_LINKS } from "@/app/constants/links"
 import { generateSlug } from "@/lib/utils"
-import { ArrowRight, User2, User2Icon } from "lucide-react"
+import { ArrowRight, User2Icon } from "lucide-react"
 import MobileNavbar from "./MobileNavbar"
 
 import { createClient } from "@/lib/supabase/server"

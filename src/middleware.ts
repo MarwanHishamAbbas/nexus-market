@@ -9,7 +9,7 @@ export async function middleware(request: NextRequest) {
   } = await supbase.auth.getUser()
 
   if (user && ["/sign-in", "/sign-up"].includes(request.nextUrl.pathname)) {
-    return NextResponse.redirect(`${process.env.NEXT_PUBLIC_SERVER_URL}/`)
+    return NextResponse.redirect(`${process.env.NEXT_PUBLIC_SITE_URL!}/`)
   }
   return await updateSession(request)
 }
