@@ -27,6 +27,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+import CreateProductForm from "@/components/product/CreateProductForm"
 
 function Admin() {
   return (
@@ -37,6 +38,7 @@ function Admin() {
           Add Product
         </span>
       </Button>
+      <CreateProductForm />
 
       <Card>
         <CardHeader>
