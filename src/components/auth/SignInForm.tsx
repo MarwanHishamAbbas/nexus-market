@@ -2,11 +2,9 @@
 
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import { z } from "zod"
 import { Form, FormControl, FormField, FormItem, FormMessage } from "../ui/form"
 import { Button } from "../ui/button"
 import { Input } from "../ui/input"
-import { createClient } from "@/lib/supabase/client"
 import { useRouter } from "next/navigation"
 import { Loader2 } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"

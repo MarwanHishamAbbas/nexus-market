@@ -1,6 +1,6 @@
 import Image from "next/image"
 
-import { MoreHorizontal, PlusCircle } from "lucide-react"
+import { MoreHorizontal } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -32,12 +32,6 @@ import CreateProductForm from "@/components/product/CreateProductForm"
 function Admin() {
   return (
     <div className="flex min-h-screen max-w-7xl mx-auto px-3 flex-col">
-      <Button size="lg" className=" gap-1 w-fit ml-auto mb-4">
-        <PlusCircle className="size-5" />
-        <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
-          Add Product
-        </span>
-      </Button>
       <CreateProductForm />
 
       <Card>
