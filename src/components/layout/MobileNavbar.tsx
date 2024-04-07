@@ -13,8 +13,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { NAV_LINKS } from "@/app/constants/links"
-import { generateSlug } from "@/lib/utils"
-import { useRouter } from "next/navigation"
 
 function MobileNavbar() {
   return (

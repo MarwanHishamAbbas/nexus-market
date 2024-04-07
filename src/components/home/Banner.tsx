@@ -4,7 +4,6 @@ import React from "react"
 import patternLeft from "../../assets/pattern-left.svg"
 import patternRight from "../../assets/pattern-right.svg"
 import { Button } from "../ui/button"
-import MaskText from "@/animations/MaskText"
 import Block from "@/animations/Block"
 import ImageReveal from "@/animations/ImageReveal"
 
