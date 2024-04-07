@@ -1,11 +1,11 @@
-import { FC } from "react"
-import Image from "next/image"
-import React from "react"
-import patternLeft from "../../assets/pattern-left.svg"
-import patternRight from "../../assets/pattern-right.svg"
-import { Button } from "../ui/button"
-import Block from "@/animations/Block"
-import ImageReveal from "@/animations/ImageReveal"
+import { FC } from "react";
+import Image from "next/image";
+import React from "react";
+import patternLeft from "../../assets/pattern-left.svg";
+import patternRight from "../../assets/pattern-right.svg";
+import { Button } from "../ui/button";
+import Block from "@/animations/Block";
+import ImageReveal from "@/animations/ImageReveal";
 
 interface BannerProps {}
 
@@ -41,7 +41,7 @@ const Banner: FC<BannerProps> = ({}) => {
         />
       </ImageReveal>
     </div>
-  )
-}
+  );
+};
 
-export default Banner
+export default Banner;
