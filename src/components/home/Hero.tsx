@@ -5,13 +5,21 @@ import { Mouse, PaintRollerIcon, PlayIcon } from "lucide-react"
 import patternLeft from "../../assets/pattern-left.svg"
 import patternRight from "../../assets/pattern-right.svg"
 import marwan from "../../assets/Marwan.jpeg"
-import MaskText from "@/animations/MaskText"
+
 import Block from "@/animations/Block"
+import ImageReveal from "@/animations/ImageReveal"
 
 const HomeHero = () => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-4 gap-5 text-center">
-      <Image src={patternLeft} alt="Pattern" />
+      <ImageReveal>
+        <Image
+          data-scroll
+          data-scroll-speed={0.1}
+          src={patternLeft}
+          alt="Pattern"
+        />
+      </ImageReveal>
       <Block className="col-span-2 space-y-6">
         <div className="inline-flex gap-2 items-center justify-center">
           <span className="text-sm text-secondary">Created By</span>
@@ -50,7 +58,15 @@ const HomeHero = () => {
           </div>
         </Block>
       </Block>
-      <Image src={patternRight} alt="Pattern" className="hidden lg:block" />
+      <ImageReveal>
+        <Image
+          data-scroll
+          data-scroll-speed={0.1}
+          src={patternRight}
+          alt="Pattern"
+          className="hidden lg:block"
+        />
+      </ImageReveal>
     </div>
   )
 }

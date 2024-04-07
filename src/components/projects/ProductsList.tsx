@@ -4,6 +4,7 @@ import ProductCard from "./ProductCard"
 import Link from "next/link"
 import { buttonVariants } from "../ui/button"
 import { ArrowRight } from "lucide-react"
+import ImageReveal from "@/animations/ImageReveal"
 
 interface ProductsListProps {
   query: TQueryValidator

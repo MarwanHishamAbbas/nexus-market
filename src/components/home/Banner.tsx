@@ -6,13 +6,21 @@ import patternRight from "../../assets/pattern-right.svg"
 import { Button } from "../ui/button"
 import MaskText from "@/animations/MaskText"
 import Block from "@/animations/Block"
+import ImageReveal from "@/animations/ImageReveal"
 
 interface BannerProps {}
 
 const Banner: FC<BannerProps> = ({}) => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-4 -space-y-24 lg:-space-y-0 lg:-space-x-24 text-center">
-      <Image src={patternRight} alt="Pattern" />
+      <ImageReveal>
+        <Image
+          data-scroll
+          data-scroll-speed={-0.1}
+          src={patternRight}
+          alt="Pattern"
+        />
+      </ImageReveal>
 
       <Block className="col-span-2 space-y-6 z-10 bg-blur rounded-lg px-2 lg:px-8 py-24 border">
         <h1 className="text-4xl font-semibold">
@@ -25,7 +33,14 @@ const Banner: FC<BannerProps> = ({}) => {
         </p>
         <Button>Get All-Access Pass</Button>
       </Block>
-      <Image src={patternLeft} alt="Pattern" />
+      <ImageReveal>
+        <Image
+          data-scroll
+          data-scroll-speed={0.1}
+          src={patternLeft}
+          alt="Pattern"
+        />
+      </ImageReveal>
     </div>
   )
 }

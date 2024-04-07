@@ -1,13 +1,21 @@
 import Image from "next/image"
 import { FC } from "react"
 import productImage from "../../assets/product.png"
+import ImageReveal from "@/animations/ImageReveal"
 
 interface ProductCardProps {}
 
 const ProductCard: FC<ProductCardProps> = ({}) => {
   return (
     <div>
-      <Image src={productImage} alt="Image" className="rounded-lg w-full" />
+      <ImageReveal>
+        <Image
+          src={productImage}
+          alt="Image"
+          className="rounded-lg w-full"
+          loading="eager"
+        />
+      </ImageReveal>
       <div className="mt-2 flex items-center justify-between">
         <div>
           <h4 className="text-sm">Framer Templage</h4>
