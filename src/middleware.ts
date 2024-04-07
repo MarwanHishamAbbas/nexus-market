@@ -1,24 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server"
-import { updateSession } from "@/lib/supabase/middleware"
-import { createClient } from "@/lib/supabase/server"
 
-export async function middleware(request: NextRequest) {
-  const supbase = createClient()
-  const {
-    data: { user },
-  } = await supbase.auth.getUser()
-
-  if (user && ["/sign-in", "/sign-up"].includes(request.nextUrl.pathname)) {
-    return NextResponse.redirect(`${process.env.NEXT_PUBLIC_SITE_URL!}/`)
-  }
-  if (
-    user?.email !== "marwanhiisham@gmail.com" &&
-    ["/admin"].includes(request.nextUrl.pathname)
-  ) {
-    return NextResponse.redirect(`${process.env.NEXT_PUBLIC_SITE_URL!}/`)
-  }
-  return await updateSession(request)
-}
+export async function middleware(request: NextRequest) {}
 
 export const config = {
   matcher: [

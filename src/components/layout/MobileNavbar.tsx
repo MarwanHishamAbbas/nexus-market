@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowRight, LogOut, Menu } from "lucide-react"
+import { ArrowRight, Menu } from "lucide-react"
 
 import { Button, buttonVariants } from "@/components/ui/button"
 import {
@@ -15,20 +15,8 @@ import {
 import { NAV_LINKS } from "@/app/constants/links"
 import { generateSlug } from "@/lib/utils"
 import { useRouter } from "next/navigation"
-import { User } from "@supabase/supabase-js"
-import { createClient } from "@/lib/supabase/client"
 
-function MobileNavbar({ user }: { user: User | null }) {
-  const supabase = createClient()
-  const router = useRouter()
-  const signOut = async () => {
-    const { error } = await supabase.auth.signOut()
-    if (error) {
-      console.log("Error Signin out")
-    }
-    router.push("/sign-in")
-    router.refresh()
-  }
+function MobileNavbar() {
   return (
     <div className="lg:hidden">
       <DropdownMenu>
@@ -43,28 +31,15 @@ function MobileNavbar({ user }: { user: User | null }) {
 
           <DropdownMenuGroup>
             {NAV_LINKS.map((link, idx) => (
-              <DropdownMenuItem
-                key={idx}
-                onClick={() => router.push(`/${generateSlug(link)}`)}
-              >
-                {link}
-              </DropdownMenuItem>
+              <DropdownMenuItem key={idx}>{link}</DropdownMenuItem>
             ))}
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
-          {user ? (
-            <DropdownMenuItem onClick={signOut}>
-              <LogOut className="mr-2 h-4 w-4" />
-              <span>Log out</span>
-            </DropdownMenuItem>
-          ) : (
-            <DropdownMenuItem
-              onClick={() => router.push("/sign-up")}
-              className={buttonVariants({ size: "lg", className: "w-full" })}
-            >
-              All-Acess Pass <ArrowRight className="size-4 ml-2" />
-            </DropdownMenuItem>
-          )}
+          <DropdownMenuItem
+            className={buttonVariants({ size: "lg", className: "w-full" })}
+          >
+            All-Acess Pass <ArrowRight className="size-4 ml-2" />
+          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     </div>

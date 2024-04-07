@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
-import { PlusCircle, Vault } from "lucide-react"
+import { PlusCircle } from "lucide-react"
 
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -24,7 +24,6 @@ import {
   ProductSchema,
   TProductSchema,
 } from "@/lib/validator/product-validator"
-import { createClient } from "@/lib/supabase/client"
 
 interface CreateProductFormProps {}
 

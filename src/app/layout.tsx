@@ -3,7 +3,6 @@ import { Inter } from "next/font/google"
 import "./globals.css"
 import Navbar from "@/components/layout/Navbar"
 import { Toaster } from "@/components/ui/toaster"
-import db from "@/lib/supabase/db"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -17,12 +16,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  db
   return (
     <html lang="en">
       <body className={inter.className}>
         <Navbar />
-        <main className=" mt-24 lg:mt-32">{children}</main>
+        <div>{children}</div>
         <Toaster />
       </body>
     </html>
