@@ -11,6 +11,12 @@ export async function middleware(request: NextRequest) {
   if (user && ["/sign-in", "/sign-up"].includes(request.nextUrl.pathname)) {
     return NextResponse.redirect(`${process.env.NEXT_PUBLIC_SITE_URL!}/`)
   }
+  if (
+    user?.email !== "marwanhiisham@gmail.com" &&
+    ["/admin"].includes(request.nextUrl.pathname)
+  ) {
+    return NextResponse.redirect(`${process.env.NEXT_PUBLIC_SITE_URL!}/`)
+  }
   return await updateSession(request)
 }
 

@@ -5,9 +5,6 @@ import {
   TCreateUserSchema,
   TSignInSchema,
 } from "@/lib/validator/auth-validators"
-import { AuthError } from "@supabase/supabase-js"
-import { SupabaseAuthClient } from "@supabase/supabase-js/dist/module/lib/SupabaseAuthClient"
-import { redirect } from "next/dist/server/api-utils"
 
 const supabase = createClient()
 export async function login(values: TSignInSchema) {
