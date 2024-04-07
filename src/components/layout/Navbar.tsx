@@ -1,20 +1,18 @@
 import Image from "next/image"
 import Link from "next/link"
-import { FC, use } from "react"
+import { FC } from "react"
 import NexusLogo from "../../assets/logo.svg"
-import { Button, buttonVariants } from "../ui/button"
+import { buttonVariants } from "../ui/button"
 import { NAV_LINKS } from "@/app/constants/links"
 import { generateSlug } from "@/lib/utils"
-import { ArrowRight, User2Icon } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import MobileNavbar from "./MobileNavbar"
-
-import UserNav from "../auth/UserNav"
 
 interface NavbarProps {}
 
 const Navbar: FC<NavbarProps> = async ({}) => {
   return (
-    <header className="fixed top-0 left-0 right-0 h-16 flex items-center bg-background/60 backdrop-blur-sm border-b border-input">
+    <header className="fixed top-0 left-0 right-0 h-16 flex items-center bg-background/60 backdrop-blur-sm border-b border-input z-50">
       <nav className="max-w-7xl mx-auto px-3 flex items-center justify-between w-full">
         <Link href="/" className="flex items-center gap-2">
           <Image src={NexusLogo} alt="Nexus Logo" />

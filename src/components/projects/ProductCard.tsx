@@ -7,7 +7,7 @@ interface ProductCardProps {}
 const ProductCard: FC<ProductCardProps> = ({}) => {
   return (
     <div>
-      <Image src={productImage} alt="Image" className="rounded-lg" />
+      <Image src={productImage} alt="Image" className="rounded-lg w-full" />
       <div className="mt-2 flex items-center justify-between">
         <div>
           <h4 className="text-sm">Framer Templage</h4>
