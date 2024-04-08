@@ -48,7 +48,8 @@
   }
   .gradient-bg {
     background: linear-gradient(180deg, #131415 0%, #050505 100%);
-    box-shadow: inset 0px 0.602187px 0.602187px -1.25px rgba(240, 240, 240, 0.07),
+    box-shadow:
+      inset 0px 0.602187px 0.602187px -1.25px rgba(240, 240, 240, 0.07),
       inset 0px 2.28853px 2.28853px -2.5px rgba(240, 240, 240, 0.063),
       inset 0px 10px 10px -3.75px rgba(240, 240, 240, 0.024);
   }
